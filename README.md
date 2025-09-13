@@ -47,4 +47,4 @@ This repository contains SQL scripts to demonstrate **ACID properties (Atomicity
 
 Below is the final state of the `FeePayments` table after all parts:  
 
-![Final Output](b61eb213-d0ad-4763-81d6-f41c85f5051d.png)  
+![Final Output](assets/output.png)
