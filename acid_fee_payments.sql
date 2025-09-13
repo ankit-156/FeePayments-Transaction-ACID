@@ -37,8 +37,6 @@ START TRANSACTION;
 INSERT INTO FeePayments (payment_id, student_name, amount, payment_date)
 VALUES (4, 'Kiran', 4700.00, '2024-06-05');
 
--- Instead of invalid insert (to avoid script crash), 
--- we rollback to simulate error handling.
 ROLLBACK;
 
 SELECT * FROM FeePayments;
@@ -51,21 +49,18 @@ START TRANSACTION;
 INSERT INTO FeePayments (payment_id, student_name, amount, payment_date)
 VALUES (5, 'Rohan', 4600.00, '2024-06-07');
 
--- Commented out invalid insert to avoid crash:
--- INSERT INTO FeePayments (payment_id, student_name, amount, payment_date)
--- VALUES (6, NULL, 3000.00, '2024-06-08'); 
-
 ROLLBACK;
 
 SELECT * FROM FeePayments;
 
 -- ================================================
--- Part D: Verify ACID Compliance
+-- Part D: Verify ACID Compliance + Isolation
 -- ================================================
 START TRANSACTION;
+
 INSERT INTO FeePayments VALUES (7, 'Sneha', 4700.00, '2024-06-08');
 INSERT INTO FeePayments VALUES (8, 'Arjun', 4900.00, '2024-06-09');
+
 COMMIT;
 
--- Final Verification
 SELECT * FROM FeePayments;
